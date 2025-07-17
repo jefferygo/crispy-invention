@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人工作辅助面板</title>
+    <meta name="description" content="集成番茄钟、日程提醒和项目管理的个人工作效率工具">
+    <meta name="keywords" content="番茄钟,时间管理,日程提醒,甘特图,工作效率">
+    <meta name="author" content="Work Assistant Dashboard">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#3498db">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>个人工作辅助面板</h1>
+        <p>番茄钟 · 日程提醒 · 项目管理</p>
+    </div>
+
+    <div class="dashboard">
+        <!-- 番茄钟模块 -->
+        <div class="panel">
+            <h2>🍅 番茄钟</h2>
+            <div class="timer-display">
+                <div class="timer-circle" id="timerCircle">
+                    <div class="timer-inner">
+                        <div class="timer-time" id="timerDisplay">25:00</div>
+                        <div class="timer-status" id="timerStatus">工作时间</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timer-controls">
+                <button class="btn btn-primary" id="startBtn">开始</button>
+                <button class="btn btn-secondary" id="pauseBtn">暂停</button>
+                <button class="btn btn-secondary" id="resetBtn">重置</button>
+            </div>
+
+            <div class="timer-settings">
+                <input type="number" id="workTime" placeholder="工作时间(分)" value="25" min="1" max="120">
+                <input type="number" id="breakTime" placeholder="休息时间(分)" value="5" min="1" max="60">
+            </div>
+
+            <div class="timer-stats">
+                <strong>今日完成：<span id="completedCount">0</span> 个番茄钟</strong>
+            </div>
+        </div>
+
+        <!-- 日程提醒模块 -->
+        <div class="panel">
+            <h2>📅 日程提醒</h2>
+            <div class="schedule-form">
+                <div class="form-group">
+                    <label>时间</label>
+                    <input type="datetime-local" id="scheduleTime">
+                </div>
+                <div class="form-group">
+                    <label>标题</label>
+                    <input type="text" id="scheduleTitle" placeholder="输入日程标题">
+                </div>
+                <div class="form-group">
+                    <label>描述</label>
+                    <textarea id="scheduleDesc" rows="2" placeholder="补充描述（可选）"></textarea>
+                </div>
+                <button class="btn btn-primary" id="addSchedule">添加日程</button>
+            </div>
+
+            <div class="schedule-list" id="scheduleList">
+                <!-- 日程项目将在这里显示 -->
+            </div>
+        </div>
+
+        <!-- 甘特图模块 -->
+        <div class="panel">
+            <h2>📊 项目时间线</h2>
+            <div class="gantt-form">
+                <div class="form-group">
+                    <label>任务名称</label>
+                    <input type="text" id="taskName" placeholder="输入任务名称">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div class="form-group">
+                        <label>开始时间</label>
+                        <input type="datetime-local" id="taskStart">
+                    </div>
+                    <div class="form-group">
+                        <label>结束时间</label>
+                        <input type="datetime-local" id="taskEnd">
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="addTask">添加任务</button>
+            </div>
+
+            <div class="gantt-chart">
+                <div class="gantt-header">
+                    <div>任务名称</div>
+                    <div>时间线</div>
+                </div>
+                <div id="ganttTasks">
+                    <!-- 甘特图任务将在这里显示 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
